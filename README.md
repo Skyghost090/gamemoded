@@ -27,7 +27,8 @@ sudo make install
 ### 🧰 Requirements
 
 - `xdo`  
-- `xlib`  
+- `xlib`
+- `gamemode (feral)`
 
 ---
 
