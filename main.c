@@ -42,7 +42,6 @@ int main(){
         height = DisplayHeight(dpy, snum);
         while (1) {
             XGetInputFocus(dpy, &wfocus, &revert_to);
-	    x = xdo_new(NULL);
 	    _pid_ = xdo_get_pid_window(x, wfocus);
 	    sprintf(loop_log, "pid: %d\n", _pid_);
 	    log_(loop_log);
