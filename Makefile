@@ -1,8 +1,10 @@
 CC = gcc
 CFLAGS = -Wall -Wextra
 LDFLAGS = -lX11 -lxdo
-EXECUTABLE = gamemoded
+EXECUTABLE = gamemode
 INSTALL_DIR = /usr/bin/
+SERVICE_DIR = $(HOME)/.config/systemd/user
+SERVICE_FILE = gamemode.service
 
 all: $(EXECUTABLE)
 

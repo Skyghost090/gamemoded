@@ -6,6 +6,7 @@
 #include <stdlib.h>
 #include <err.h>
 #include "main.h"
+#include "gamemode_client.h"
 #include <xdo.h>
 #include <sys/resource.h>
 
@@ -14,12 +15,15 @@ void log_(char msg_[]){
 }
 
 void enable(){
-    setpriority(PRIO_PROCESS, _pid_, -20);
-    printf("window priority:%d\n", prio);
+//  setpriority(PRIO_PROCESS, _pid_, -20);
+    gamemode_request_start_for(_pid_);
+    log_("gamemode started...");
 }
 
 void disable(){
-    setpriority(PRIO_PROCESS, _pid_, 0);
+//  setpriority(PRIO_PROCESS, _pid_, 0);
+    gamemode_request_end_for(_pid_);
+    log_("gamemode ended...");
 }
 
 void root_check(){
@@ -29,7 +33,7 @@ void root_check(){
 }
 
 int main(){
-    root_check();
+//    root_check();
     tuning = true;
     x = xdo_new(NULL);
     if(!(dpy = XOpenDisplay(0))){
@@ -41,8 +45,7 @@ int main(){
             XGetInputFocus(dpy, &wfocus, &revert_to);
 	    x = xdo_new(NULL);
 	    _pid_ = xdo_get_pid_window(x, wfocus);
-	    prio = getpriority(PRIO_PROCESS, _pid_);
-	    sprintf(loop_log, "pid: %d prio is: %d\n", _pid_, prio);
+	    sprintf(loop_log, "pid: %d\n", _pid_);
 	    log_(loop_log);
             XGetWindowAttributes(dpy, wfocus, &attribs);
             if (height == attribs.height){
