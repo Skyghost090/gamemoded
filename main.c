@@ -23,7 +23,6 @@ void enable(){
 void disable(){
 //  setpriority(PRIO_PROCESS, _pid_, 0);
     gamemode_request_end_for(_pid_);
-    log_("gamemode ended...");
 }
 
 void root_check(){
