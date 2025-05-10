@@ -48,7 +48,7 @@ sudo make install
 GameModed works **out of the box** once installed. Just launch your game!
 
 ```bash
-gamemoded &
+gamemode &
 ```  
 
 ---
